@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Services\UploadService;
+use App\Traits\HasImageUrl;
 use App\Traits\HasSlug;
 use \Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
-    use HasSlug;
+    use HasSlug, HasImageUrl;
 
     protected $fillable = [
         'name',
@@ -26,9 +27,7 @@ class Category extends Model
 
     public function imageUrl(): Attribute
     {
-        return Attribute::make(
-            fn() => UploadService::url($this->image),
-        );
+        return $this->imageUrl();
     }
 }
 

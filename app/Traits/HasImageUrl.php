@@ -2,22 +2,18 @@
 
 namespace App\Traits;
 use App\Services\UploadService;
-use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 trait HasImageUrl
 {
-    public function ImageUrl(): string
+    public function ImageUrl(): Attribute
     {
-        return 'image';
+        return Attribute::make(
+            fn() => UploadService::url($this->image),
+        );
+        ;
     }
 
-    public static function bootHasImageUrl(Model $model): void
-    {
-        static::getting()->each(function (Model $model) {
-            $model->image = UploadService::url($model->image);
-        });
-    }
 
 
 }
