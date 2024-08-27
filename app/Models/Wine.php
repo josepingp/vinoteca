@@ -40,7 +40,7 @@ class Wine extends Model
 
     public function imageUrl(): Attribute
     {
-        return $this->imageUrl();
+        return $this->getImageUrl();
     }
 
     public function formattedPrice(): Attribute

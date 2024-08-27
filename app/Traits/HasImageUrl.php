@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 
 trait HasImageUrl
 {
-    public function ImageUrl(): Attribute
+    public function getImageUrl(): Attribute
     {
         return Attribute::make(
             fn() => UploadService::url($this->image),

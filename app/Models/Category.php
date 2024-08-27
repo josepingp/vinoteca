@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Services\UploadService;
 use App\Traits\HasImageUrl;
 use App\Traits\HasSlug;
 use \Illuminate\Database\Eloquent\Casts\Attribute;
@@ -27,7 +26,7 @@ class Category extends Model
 
     public function imageUrl(): Attribute
     {
-        return $this->imageUrl();
+        return $this->getImageUrl();
     }
 }
 
