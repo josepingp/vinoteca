@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Wine;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Repositories\Category\CategoryRepositoryInteface;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -31,5 +33,11 @@ class CategoryController extends Controller
             'method' => 'POST',
             'submit' => 'Crear'
         ]);
+    }
+
+    public function store(CategoryRequest $request): RedirectResponse
+    {
+        $this->repository->create($request->validated());
+        return redirect()->route('categories.index');
     }
 }

@@ -35,14 +35,14 @@
                                         </p>
                                         <div class="absolute bottom-0 right-0 p-4 flex justify-between">
                                             <a href="{{ route('categories.edit', $category) }}"
-                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 rounded mb-2 md:mb-0 text-center">
+                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 px-2 w-full rounded mb-2 md:mb-0 text-center">
                                                 {{ __('Editar') }}
                                             </a>
                                             <form action="{{ route('categories.destroy', $category) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                    class="bg-red-500 hover:bg-red-700 text-white font-bold p-1 w-full md:w-auto ms-2 rounded ">
+                                                    class="bg-red-500 hover:bg-red-700 text-white font-bold p-1 md:w-auto ms-2 rounded mb-2 md:mb-0 text-center">
                                                     {{ __('Eliminar') }}
                                                 </button>
                                             </form>

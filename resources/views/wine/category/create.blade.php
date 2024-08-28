@@ -5,10 +5,5 @@
         </h2>
     </x-slot>
 
-    @include('wine.category.form', [
-        'category' => $category,
-        'action' => $action,
-        'method' => $method,
-        'submit' => $submit,
-    ])
+    @include('wine.category.form')
 </x-app-layout>

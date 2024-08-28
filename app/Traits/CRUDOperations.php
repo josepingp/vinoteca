@@ -26,7 +26,7 @@ trait CRUDOperations
 
     public function create(array $data): Model
     {
-        $image = $this->uploadImage($data, $this->model);
+        $image = $this->uploadImage($data);
 
         return $this->model::create(array_merge($data, ['image' => $image]));
     }
@@ -36,7 +36,7 @@ trait CRUDOperations
         if (data_get($data, 'image')) {
             UploadService::delete($model->image);
 
-            data_set($data, 'image', $this->uploadImage($data, $model));
+            data_set($data, 'image', $this->uploadImage($data));
         }
 
         $model->update($data);
@@ -53,7 +53,7 @@ trait CRUDOperations
         return $model->delete();
     }
 
-    private function uploadImage(array $data, Model $model): string
+    private function uploadImage(array $data): string
     {
         return UploadService::upload(data_get($data, 'image'), strtolower(class_basename($this->model)));
     }
