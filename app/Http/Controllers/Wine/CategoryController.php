@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Repositories\Category\CategoryRepositoryInteface;
+use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class CategoryController extends Controller
@@ -60,6 +60,20 @@ class CategoryController extends Controller
         $this->repository->update($request->validated(), $category);
 
         session()->flash('success', 'Categoría actualizada con éxito');
+
+        return redirect()->route('categories.index');
+    }
+
+    public function destroy(Category $category): RedirectResponse
+    {
+        try {
+            $this->repository->delete($category);
+
+            session()->flash('success', 'Categoría eliminada con éxito');
+
+        } catch (Exception $exception) {
+            session()->flash('error', $exception->getMessage());
+        }
 
         return redirect()->route('categories.index');
     }
