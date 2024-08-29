@@ -2,11 +2,14 @@
 
 namespace App\Http\Requests;
 
+use App\Traits\ImageValidationRules;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 class WineRequest extends FormRequest
 {
+    use ImageValidationRules;
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -22,12 +25,6 @@ class WineRequest extends FormRequest
      */
     public function rules(): array
     {
-        $imageRules = 'sometimes|image|mimes:png,jpg,jpeg|max:2048';
-
-        if ($this->isMethod('POST')) {
-            $imageRules = 'required|image|mimes:png,jpg,jpeg|max:2048';
-        }
-
         return [
             'category_id' => 'required|exists:categories,id',
             'name' => ['required', 'string', 'max:255', Rule::unique('wines', 'name')->ignore($this->route('wine'))],
@@ -35,7 +32,7 @@ class WineRequest extends FormRequest
             'year' => ['required', 'integer', 'min:' . now()->subYears(100), 'max:' . now()->year],
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
-            'image' => $imageRules,
+            'image' => $this->imageRules(),
         ];
     }
 

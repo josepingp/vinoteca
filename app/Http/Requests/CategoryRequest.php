@@ -2,11 +2,14 @@
 
 namespace App\Http\Requests;
 
+use App\Traits\ImageValidationRules;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 class CategoryRequest extends FormRequest
 {
+    use ImageValidationRules;
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -23,17 +26,11 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
 
-        $imageRules = 'sometimes|image|mimes:png,jpg,jpeg|max:2048';
-
-        if ($this->isMethod('POST')) {
-            $imageRules = 'required|image|mimes:png,jpg,jpeg|max:2048';
-        }
-
         return [
             // 'name' => 'required|string|max:255',
             'name' => ['required', 'string', 'max:255', Rule::unique('categories', 'name')->ignore($this->route('category'))],
             'description' => 'required|string|max:2000',
-            'image' => $imageRules,
+            'image' => $this->imageRules(),
         ];
     }
 
