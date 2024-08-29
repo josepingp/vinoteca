@@ -54,4 +54,13 @@ class CategoryController extends Controller
             'submit' => 'Actualizar'
         ]);
     }
+
+    public function update(CategoryRequest $request, Category $category): RedirectResponse
+    {
+        $this->repository->update($request->validated(), $category);
+
+        session()->flash('success', 'Categoría actualizada con éxito');
+
+        return redirect()->route('categories.index');
+    }
 }
