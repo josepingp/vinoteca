@@ -20,6 +20,16 @@ class WineController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return view('wine.create', [
+            'wine' => $this->repository->model(),
+            'action' => route('wines.store'),
+            'method' => 'POST',
+            'submit' => 'Crear'
+        ]);
+    }
+
 
 
 
