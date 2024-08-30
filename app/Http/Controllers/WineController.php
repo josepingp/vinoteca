@@ -13,7 +13,7 @@ class WineController extends Controller
 
     public function index()
     {
-        return view('wines.index', [
+        return view('wine.index', [
             'wines' => $this->repository->paginate(
                 relationships: ['category'],
             )
