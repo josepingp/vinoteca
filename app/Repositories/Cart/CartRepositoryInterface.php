@@ -14,7 +14,7 @@ interface CartRepositoryInterface
 
     public function remove(int $wineId): void;
 
-    public function getTotalCuantityForWine(Wine $wine): float;
+    public function getTotalCuantityForWine(Wine $wine): int;
 
     public function getTotalCostForWine(Wine $wine, bool $formated): string|float;
 
