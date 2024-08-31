@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\HasImageUrl;
 use App\Traits\HasSlug;
+use App\Traits\WithCurrencyFormatted;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,7 +12,7 @@ use NumberFormatter;
 
 class Wine extends Model
 {
-    use HasSlug, HasImageUrl;
+    use HasSlug, HasImageUrl, WithCurrencyFormatted;
 
     protected $fillable = [
         'category_id',
@@ -45,11 +46,8 @@ class Wine extends Model
 
     public function formattedPrice(): Attribute
     {
-        $formatter = new NumberFormatter('es_ES', NumberFormatter::CURRENCY);
-
         return Attribute::make(
-            get: fn() => $formatter->formatCurrency($this->price, 'EUR'),
+            get: fn() => $this->formatCurrency($this->price)
         );
-
     }
 }
