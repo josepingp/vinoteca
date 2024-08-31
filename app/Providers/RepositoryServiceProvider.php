@@ -6,6 +6,8 @@ use App\Repositories\Cart\CartRepositoryInterface;
 use App\Repositories\Category\CategoryRepositoryInteface;
 use App\Repositories\Category\EloquentCategoryRepository;
 use App\Repositories\SessionCartRepository;
+use App\Repositories\Shop\EloquentShopRepository;
+use App\Repositories\Shop\ShopRepositoryInterface;
 use App\Repositories\Wine\EloquentWineRepository;
 use App\Repositories\Wine\WineRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
@@ -30,6 +32,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             CartRepositoryInterface::class,
             SessionCartRepository::class
+        );
+
+        $this->app->bind(
+            ShopRepositoryInterface::class,
+            EloquentShopRepository::class
         );
     }
 
