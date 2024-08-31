@@ -19,33 +19,36 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                             @foreach ($wines as $wine)
-                                <x-wine-image :wine="$wine"></x-wine-image>
+                                <div class="relative flex flex-row rounded-lg hover:bg-gray-700 ">
+                                    <x-wine-image :wine="$wine"></x-wine-image>
+                                    <div class="flex flex-col p-4">
+                                        <div class="flex flex-col p-4 leading-normal">
+                                            <x-wine-name-and-category :wine="$wine"></x-wine-name-and-category>
+                                        </div>
 
-                                <div class="flex flex-col p-4 leading-normal">
-                                    <x-wine-name-and-category :wine="$wine"></x-wine-name-and-category>
-                                </div>
+                                        <div class="border-b border-gray-300 dark:border-gray-600 mb-3"></div>
 
-                                <div class="border-b border-gray-300 dark:border-gray-600 mb-3"></div>
+                                        <x-wine-info :wine="$wine"></x-wine-info>
 
-                                <x-wine-info :wine="$wine"></x-wine-info>
-
-                                <div class="absolute bottom-0 right-0 p-4 flex justify-between">
-                                    <a href="{{ route('wines.edit', $wine) }}"
-                                        class="bg-blue-500
+                                    </div>
+                                    <div class="absolute bottom-0 right-0 p-4 flex justify-between">
+                                        <a href="{{ route('wines.edit', $wine) }}"
+                                            class="bg-blue-500
                                                 hover:bg-blue-700 text-white font-bold p-1 rounded mb-2 md:mb-0
                                                 text-center">
-                                        {{ __('Editar') }}
-                                    </a>
+                                            {{ __('Editar') }}
+                                        </a>
 
-                                    <form action="{{ route('wines.destroy', $wine) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="bg-red-500 hover:bg-red-700 text-white font-bold p-1
-                                                    rounded mb-2 md:mb-0 text-center">
-                                            {{ __('Eliminar') }}
-                                        </button>
-                                    </form>
+                                        <form action="{{ route('wines.destroy', $wine) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="bg-red-500 hover:bg-red-700 text-white font-bold p-1
+                                                    rounded mb-2 md:mb-0 text-center ms-2">
+                                                {{ __('Eliminar') }}
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>

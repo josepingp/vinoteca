@@ -29,7 +29,7 @@ class WineRequest extends FormRequest
             'category_id' => 'required|exists:categories,id',
             'name' => ['required', 'string', 'max:255', Rule::unique('wines', 'name')->ignore($this->route('wine'))],
             'description' => 'required|string|max:2000',
-            'year' => ['required', 'integer', 'min:' . now()->subYears(100), 'max:' . now()->year],
+            'year' => ['required', 'integer', 'min:' . now()->subYears(100)->year, 'max:' . now()->year],
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
             'image' => $this->imageRules(),
