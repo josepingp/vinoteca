@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\WineRequest;
 use App\Repositories\Wine\WineRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,17 @@ class WineController extends Controller
             'submit' => 'Crear'
         ]);
     }
+
+    public function store(WineRequest $request)
+    {
+        $this->repository->create($request->validated());
+
+        session()->flash('success', 'Vino creado con éxito');
+
+        return redirect()->route('wines.index');
+    }
+
+
 
 
 

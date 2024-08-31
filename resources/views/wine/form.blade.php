@@ -94,9 +94,7 @@
                         <label for="description"
                             class="block mb-2 text-sm text-gray-700 dark:text-gray-300 font-bold">Descripción</label>
                         <textarea name="description" id="description" rows="4"
-                            class="w-full px-3 py-2 leading-tight shadow appearance-none border rounded focus:shadow-outline dark:text-gray-300 focus:outline-none text-gray-700">
-                            {{ old('description', $wine->description) }}
-                        </textarea>
+                            class="w-full px-3 py-2 leading-tight shadow appearance-none border rounded focus:shadow-outline dark:text-gray-300 focus:outline-none text-gray-700">{{ old('description', $wine->description) }}</textarea>
                         @error('description')
                             <p class="text-red-500 text-xs italic">{{ $message }}</p>
                         @enderror
@@ -105,7 +103,7 @@
                     {{-- Submit --}}
 
                     <div class="mb-4">
-                        <a href="{{ route('categories.index') }}"
+                        <a href="{{ route('wines.index') }}"
                             class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                             {{ __('Cancelar') }}
                         </a>
@@ -114,10 +112,6 @@
                             {{ $submit }}
                         </button>
                     </div>
-
-
-
-
 
                 </form>
             </div>
