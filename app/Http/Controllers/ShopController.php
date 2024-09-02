@@ -20,7 +20,11 @@ class ShopController extends Controller
 
     public function index(): View
     {
+        ray()->showQueries();
+
         $wines = $this->repository->paginate();
+
+        ray($wines);
 
         return view('shop.index', compact('wines'));
     }

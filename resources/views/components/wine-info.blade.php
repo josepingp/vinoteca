@@ -9,7 +9,7 @@
 </p>
 
 <p class="mb-2 font-normal text-gray-700 dark:text-gray-400">
-    {{ __('Stock') }}: {{ $wine->stock }}
+    {{ __('Stock') }}: {{ $wine->stock }} {{ __('unidades') }}
 </p>
 
 <p class="mb-2 font-normal text-gray-700 dark:text-gray-400">

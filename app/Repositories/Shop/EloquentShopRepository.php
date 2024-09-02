@@ -10,7 +10,7 @@ class EloquentShopRepository implements ShopRepositoryInterface
 
     public function paginate(int $perPage = 15): LengthAwarePaginator
     {
-        return Wine::paginate($perPage);
+        return Wine::with('category')->paginate($perPage);
     }
 
     public function find(int $id): Wine
