@@ -90,7 +90,7 @@ class SessionCartRepository implements CartRepositoryInterface
         }
     }
 
-    public function getTotalCuantityForWine(Wine $wine): int
+    public function getTotalQuantityForWine(Wine $wine): int
     {
         $cart = $this->getCart();
 

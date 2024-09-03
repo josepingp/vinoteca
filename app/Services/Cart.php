@@ -31,9 +31,9 @@ final class Cart
         $this->repository->remove($wineId);
     }
 
-    public function getTotalCuantityForWine(Wine $wine): int
+    public function getTotalQuantityForWine(Wine $wine): int
     {
-        return $this->repository->getTotalCuantityForWine($wine);
+        return $this->repository->getTotalQuantityForWine($wine);
     }
 
     public function getTotalCostForWine(Wine $wine, bool $formated = false): string

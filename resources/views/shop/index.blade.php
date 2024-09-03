@@ -20,11 +20,11 @@
                                     <div
                                         class="bg-green-500 text-white text-xs font-bold uppercase px-5 py-2 mb-2 rounded-full">
                                         <p class="font-normal mb-2">
-                                            {{ __('En el carrito') }}: {{ $cart->getQuantityForWine($wine) }}
+                                            {{ __('En el carrito') }}: {{ $cart->getTotalQuantityForWine($wine) }}
                                             {{ __('unidades') }}
                                         </p>
                                         <p class="font-normal">
-                                            {{ __('Total') }}: {{ $cart->getTotalForWine($wine, true) }}
+                                            {{ __('Total') }}: {{ $cart->getTotalCostForWine($wine, true) }}
                                         </p>
                                     </div>
 
@@ -43,9 +43,10 @@
                                     <x-cart-adder :wine="$wine" :action="route('shop.addToCart')" />
                                 @else
                                     <div class="flex">
-                                        <x-cart-incrementor :item="$wine" :action="route('shop.increment')" :hidden_key="id" />
-                                        <x-cart-decrementor :item="$wine" :action="route('shop.decrement')" :hidden_key="id" />
-                                        <x-cart-remover :item="$wine" :action="route('shop.removeFromCart')" :hidden_key="id" />
+                                        {{-- {{ ray($wine) }} --}}
+                                        <x-cart-incrementor :item="$wine" :action="route('shop.increment')" :hidden_key="'id'" />
+                                        <x-cart-decrementor :item="$wine" :action="route('shop.decrement')" :hidden_key="'id'" />
+                                        <x-cart-remover :item="$wine" :action="route('shop.remove')" :hidden_key="'id'" />
                                     </div>
                                 @endif
                             </div>

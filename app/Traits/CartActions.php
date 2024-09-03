@@ -11,6 +11,8 @@ trait CartActions
         $quantity = request()->input('quantity', 1);
 
         $this->cart->add($wine, $quantity);
+
+        session()->flash('success', 'Producto agregado');
     }
 
     public function incrementProductQuantity(): void
