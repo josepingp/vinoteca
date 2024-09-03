@@ -6,9 +6,7 @@ use App\Repositories\Shop\ShopRepositoryInterface;
 use App\Services\Cart;
 use App\Traits\CartActions;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Redirect;
 
 class ShopController extends Controller
 {
@@ -48,6 +46,13 @@ class ShopController extends Controller
     public function decrement(): RedirectResponse
     {
         $this->decrementProductQuantity();
+
+        return redirect()->route('shop.index');
+    }
+
+    public function remove(): RedirectResponse
+    {
+        $this->removeProduct();
 
         return redirect()->route('shop.index');
     }
