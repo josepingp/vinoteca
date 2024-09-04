@@ -3,6 +3,7 @@
 namespace App\Services;
 use App\Models\Wine;
 use App\Repositories\Cart\CartRepositoryInterface;
+use Illuminate\Support\Collection;
 
 final class Cart
 {
@@ -54,6 +55,11 @@ final class Cart
     public function hasProduct(Wine $wine): bool
     {
         return $this->repository->hasProduct($wine);
+    }
+
+    public function getCart(): Collection
+    {
+        return $this->repository->getCart();
     }
 
     public function isEmpty(): bool

@@ -16,15 +16,12 @@ class ShopController extends Controller
         private readonly ShopRepositoryInterface $repository,
         private readonly Cart $cart
     ) {
+        ray($this->cart->getCart());
     }
 
     public function index(): View
     {
-        // ray()->showQueries();
-
         $wines = $this->repository->paginate();
-
-        // ray($wines);
 
         return view('shop.index', compact('wines'));
     }
