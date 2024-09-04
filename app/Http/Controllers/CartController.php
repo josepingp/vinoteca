@@ -19,6 +19,7 @@ class CartController extends Controller
 
     public function index(): View
     {
+        ray($this->cart->getCart());
         return view('cart.index');
     }
 

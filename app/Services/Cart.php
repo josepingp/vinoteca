@@ -47,7 +47,7 @@ final class Cart
         return $this->repository->getTotalCost($formated);
     }
 
-    public function getTotalCuantity(): int
+    public function getTotalQuantity(): int
     {
         return $this->repository->getTotalCuantity();
     }
