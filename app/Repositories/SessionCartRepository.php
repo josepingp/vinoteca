@@ -143,8 +143,9 @@ class SessionCartRepository implements CartRepositoryInterface
 
     public function getCart(): Collection
     {
-        return Session::get(self::SESSION);
+        return Session::get(self::SESSION, collect());
     }
+
 
     public function isEmpty(): bool
     {
