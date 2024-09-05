@@ -96,7 +96,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr class="bg-gray-100 dark:bg-gray-700">
-                                        <td class="px-6 py-4 whitespace-nowrap"></td>
+                                        <td class="px-6 py-4 whitespace-nowrap">{{ __('Total') }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap"></td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900 dark:text-gray-100 text-center">
